@@ -1,0 +1,102 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sleepshield.app">
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+  <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+  <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+  <application
+      android:name=".MainApplication"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:allowBackup="true"
+      android:theme="@style/AppTheme"
+      android:supportsRtl="true">
+
+    <activity
+        android:name=".MainActivity"
+        android:configChanges="orientation|screenSize|screenLayout|uiMode"
+        android:launchMode="singleTask"
+        android:exported="true"
+        android:theme="@style/AppTheme">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <service
+        android:name=".service.SleepAccessibilityService"
+        android:label="@string/app_name"
+        android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.accessibilityservice.AccessibilityService" />
+        </intent-filter>
+        <meta-data
+            android:name="android.accessibilityservice"
+            android:resource="@xml/accessibility_service_config" />
+    </service>
+
+    <receiver
+        android:name=".receiver.SleepDeviceAdminReceiver"
+        android:label="Sleep Shield protection"
+        android:permission="android.permission.BIND_DEVICE_ADMIN"
+        android:exported="false">
+        <meta-data
+            android:name="android.app.device_admin"
+            android:resource="@xml/device_admin" />
+        <intent-filter>
+            <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+        </intent-filter>
+    </receiver>
+
+    <receiver android:name=".receiver.AlarmReceiver" android:exported="false" />
+
+    <receiver
+        android:name=".receiver.SleepWidgetProvider"
+        android:label="Sleep Shield (Full)"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            <action android:name="com.sleepshield.app.ACTION_TOGGLE_SHIELD" />
+        </intent-filter>
+        <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/widget_info_4x2" />
+    </receiver>
+
+    <receiver
+        android:name=".receiver.SleepWidgetProviderSmall"
+        android:label="Sleep Shield (Toggle)"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            <action android:name="com.sleepshield.app.ACTION_TOGGLE_SHIELD" />
+        </intent-filter>
+        <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/widget_info_1x1" />
+    </receiver>
+
+    <receiver
+        android:name=".receiver.SleepWidgetProviderMedium"
+        android:label="Sleep Shield (Status)"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            <action android:name="com.sleepshield.app.ACTION_TOGGLE_SHIELD" />
+        </intent-filter>
+        <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/widget_info_2x2" />
+    </receiver>
+  </application>
+</manifest>

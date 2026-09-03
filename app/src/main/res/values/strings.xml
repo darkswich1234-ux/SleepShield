@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sleep Shield</string>
+    <string name="accessibility_desc">Allows Sleep Shield to block distracting apps during your sleep window.</string>
+    <string name="widget_desc_1x1">Quickly toggle Sleep Shield.</string>
+    <string name="widget_desc_2x2">View status and wake time.</string>
+    <string name="widget_desc_4x2">Full Sleep Shield dashboard.</string>
+</resources>
