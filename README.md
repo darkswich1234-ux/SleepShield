@@ -2,7 +2,7 @@
 
 **Sleep Shield** is a dedicated sleep companion and productivity app designed to help you reclaim your nights. By creating a protective barrier around your most distracting apps during your sleep window, Sleep Shield ensures you get the rest you need and wake up refreshed for what matters most.
 
-Developed as a sister app to [Prayer Shield](https://github.com/darkswich1234-ux/PrayerShield), it shares a unified design language and optional synchronization for Fajr prayer times.
+Developed as a sister app to [Prayer Shield](https://github.com/darkswich1234-ux/PrayerShield.), it shares a unified design language and optional synchronization for Fajr prayer times.
 
 ---
 
